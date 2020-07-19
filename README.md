@@ -11,7 +11,11 @@ To use this bot u have to install following requirements:
             =>async_generator
             =>colorama
             =>bs4
-            
+    
+ To install lilbraries from requirements.txt type the command in cmd/terminal:
+     
+         pip install -r requirements.txt
+
           
 steps to use this bot:
 
@@ -21,5 +25,5 @@ steps to use this bot:
   
 Future updates:
 
-    trying to solve captcha with this script.....
-    will update soon
+   trying to solve captcha with this script.....
+   will update soon

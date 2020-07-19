@@ -1,4 +1,4 @@
-# Automating_telegtam_bot
+# Automating_telegram_bot
 
 
 In this Project i have developed a python script to automate the process of a telegram bot

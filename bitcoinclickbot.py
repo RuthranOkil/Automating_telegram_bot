@@ -4,23 +4,17 @@ from telethon.errors import SessionPasswordNeededError
 from telethon.errors import FloodWaitError
 from time import sleep
 import json,re,sys,os
-try:
-   import requests
-   from bs4 import BeautifulSoup
-except:
-   print ("it looks like Module Requests and Bs4 Not yet installed \n \To install Please Type pip install requests and pip install bs4")
-   sys.exit()
-
+import requests
+from bs4 import BeautifulSoup
+import subprocess
+#creating new session
 c = requests.Session()
-
-
-#banner = 
 print("""================================================================================
 A Bot Developed By Ruthran Elangovan To automate process of a telegram Bot
 Contact me on telegram my ID is: @iamsry
 instagram: @ruthra_the_destroyer
 website: will lanch soon....
-============================================================================================
+=========================================================================================
      
 Author By Ruthran Elangovan
 Channel: Professorhulk
@@ -28,9 +22,10 @@ Supported By Knowledge❤️""")
 
 print ("This bot is used to automate @BTC_Click_Bot")
 
-if not os.path.exists("session"):
-    os.makedirs("session")
 
+
+ua={"User-Agent": "Mozilla/5.0 (Linux; Android 5.1; A1603 Build/LMY47I; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36"}
+# to print remaining timing for website visit
 def print_timer(x):
     sys.stdout.write("\r")
     sys.stdout.write("                                                               ")
@@ -41,12 +36,8 @@ def print_timer(x):
        sleep(1)
 
 
-ua={"User-Agent": "Mozilla/5.0 (Linux; Android 5.1; A1603 Build/LMY47I; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36"}
-
-
-
-api_id = 1529432
-api_hash = 'cf416e154ed19428033b82b8ee741c77'
+api_id = 1529432 #Api ID
+api_hash = 'cf416e154ed19428033b82b8ee741c77' # API HASH
 phone_number = input("Enter your telegram mobile number with country code:")
 
 client = TelegramClient("session/"+phone_number, api_id, api_hash)
@@ -59,13 +50,12 @@ if not client.is_user_authorized():
    passw = input("Your 2fa Password : ")
    me = client.start(phone_number,passw)
 me = client.get_me()
-#print (banner)
-print ("Username: ",me.username)
+print ("Username: ",me.username)#getting username
 print ("----------Starting the Automation-----------!")
 try:
  channel_entity=client.get_entity("@BitcoinClick_bot")
  channel_username="@BitcoinClick_bot"
- for i in range(5000000):
+ for i in range(100000000):
   sys.stdout.write("\r")
   sys.stdout.write("                                                              ")
   sys.stdout.write("\r")
@@ -81,7 +71,10 @@ try:
      posts = client(GetHistoryRequest(peer=channel_entity,limit=1,offset_date=None,offset_id=0,max_id=0,min_id=0,add_offset=0,hash=0))
      message = posts.messages[0].message
      print ("-->",message)
-     sys.exit()
+     print("Retrying in 5 minutes")
+     print("Press Ctrl+'C' to quit")
+     sleep(300)
+     
   else:
     try:
      url = posts.messages[0].reply_markup.rows[0].buttons[0].url
@@ -103,9 +96,6 @@ try:
            messageres = posts.messages[1].message
            sleep(2)
            sys.stdout.write("-->"+messageres+"\n")
-        else:
-           pass
-
 
      elif soup.find('div', id="headbar") is not None:
         for dat in soup.find_all('div',class_="container-fluid"):
@@ -142,8 +132,6 @@ try:
            messageres = posts.messages[1].message
            sleep(2)
            sys.stdout.write("-->"+messageres+"\n")
-        else:
-           pass
 
 finally:
-   client.disconnect()
+   client.disconnect()#Dissconnecting from client

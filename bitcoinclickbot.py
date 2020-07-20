@@ -9,6 +9,9 @@ from bs4 import BeautifulSoup
 import subprocess
 #creating new session
 c = requests.Session()
+if not os.path.exists("session"):
+    os.makedirs("session")
+
 print("""================================================================================
 A Bot Developed By Ruthran Elangovan To automate process of a telegram Bot
 Contact me on telegram my ID is: @iamsry

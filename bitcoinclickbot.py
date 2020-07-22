@@ -20,7 +20,7 @@ website: will lanch soon....
 =========================================================================================
      
 Author By Ruthran Elangovan
-Channel: Professorhulk
+email: Professorhulk0077@gmail.com
 Supported By Knowledge❤️""")
 
 print ("This bot is used to automate @BTC_Click_Bot")
@@ -41,7 +41,10 @@ def print_timer(x):
 
 api_id = 1529432 #Api ID
 api_hash = 'cf416e154ed19428033b82b8ee741c77' # API HASH
-phone_number = input("Enter your telegram mobile number with country code:")
+if len(sys.argv)<2:
+    phone_number = input("Enter your telegram mobile number with country code:")
+else:
+    phone_number = sys.argv[1]
 
 client = TelegramClient("session/"+phone_number, api_id, api_hash)
 client.connect()

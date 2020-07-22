@@ -3,6 +3,8 @@
 
 In this Project i have developed a python script to automate the process of a telegram bot
 
+This script is developed using Telethon and Bs4
+
 To use this bot u have to install following requirements:
 
             rsa
